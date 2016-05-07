@@ -17,6 +17,10 @@
   <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
 
   <style>
+  img{
+    max-width: 40px;
+    max-height: 40px;
+  }
   .yo{ float: left;}
   .headingm{color: #000}
   .kakkarotwho{color: #000; }
@@ -25,10 +29,11 @@
       padding-top: 45px;
       padding-bottom: 45px;
       margin-bottom: 30px;
+      margin: 10px;
   	-webkit-transition: all 0.3s;
   	transition: all 0.3s;
-      border: 5px solid transparent;
-
+      border: 1px solid transparent;
+display: inline-block
 
   }
   </style>
@@ -75,7 +80,7 @@
     <hr>
     <?php
     require 'connect.inc.php';
-    $query  ="SELECT * FROM `mobiledb` WHERE `camera` > '10' AND `rating_value` > '110'";
+    $query  ="SELECT * FROM `mobiledb` WHERE `camera` > '10' AND `rating_value` > '120'";
     if($query_run = mysql_query($query))
     {
       for( $i=0;$i<mysql_num_rows($query_run);$i++)
@@ -88,13 +93,49 @@
          $screen =  mysql_result($query_run,$i,'screen');
 
          $price =  mysql_result($query_run,$i,'price');
-        echo "<div class='menu-style dark'><b><i>$brand</i></b><br>$name<br>$camera<span> </span>$screen<span> </span> in Just $price<div>";
+         $img = $brand.".jpg";
+           $img = str_replace(' ', '', $img);
+        echo "<div class='menu-style dark'><img src = '$img'><br><b><i>$brand</i></b><br>$name<br>$camera $screen in Just Rs. $price</div>";
 
       }
+      echo "<div class='menu-style dark'><b>And Many More</b></div>";
     }
 
      ?>
-  </div>
+     <hr>
+     <h3><i>Best Screen Size Mobile</i></h3>
+     <hr>
+     <?php
+     require 'connect.inc.php';
+     $query  ="SELECT * FROM `mobiledb` WHERE `screen` > '5.2' AND `rating_value` > '110'";
+     if($query_run = mysql_query($query))
+     {
+       for( $i=0;$i<mysql_num_rows($query_run);$i++)
+       {
+         $name = mysql_result($query_run,$i,'name');
+          $brand =  mysql_result($query_run,$i,'brand');
 
+          $camera =  mysql_result($query_run,$i,'camera');
+
+          $screen =  mysql_result($query_run,$i,'screen');
+
+          $price =  mysql_result($query_run,$i,'price');
+
+          $img = $brand.".jpg";
+          $img = str_replace(' ', '', $img);
+
+         echo "<div class='menu-style dark'><img src = '$img'><br><b><i>$brand</i></b><br>$name<br>$camera $screen in Just Rs. $price</div>";
+
+       }
+       echo "<div class='menu-style dark'><b>And Many More</b></div>";
+     }
+
+      ?>
+  </div>
+  <hr>
+  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
 </body>
 </html>

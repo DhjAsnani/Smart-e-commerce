@@ -1,0 +1,1 @@
+All logos are the property of their respective companies. they have just been used for educational purpose only.
