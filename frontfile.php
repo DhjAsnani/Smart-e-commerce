@@ -20,9 +20,21 @@
   .yo{ float: left;}
   .headingm{color: #000}
   .kakkarotwho{color: #000; }
+  .menu-style {
+      color: #000;
+      padding-top: 45px;
+      padding-bottom: 45px;
+      margin-bottom: 30px;
+  	-webkit-transition: all 0.3s;
+  	transition: all 0.3s;
+      border: 5px solid transparent;
+
+
+  }
   </style>
 </head>
 <body>
+  <nav>
   <div class="navbar navbar-inverse navbar-static-top" role="navigation">
 
       <div class="navbar-header">
@@ -57,6 +69,31 @@
           </div>
 
       </div>
+  </div></nav>
+  <div class="container">
+    <h3><i>Best Camera Mobile</i></h3>
+    <hr>
+    <?php
+    require 'connect.inc.php';
+    $query  ="SELECT * FROM `mobiledb` WHERE `camera` > '10' AND `rating_value` > '110'";
+    if($query_run = mysql_query($query))
+    {
+      for( $i=0;$i<mysql_num_rows($query_run);$i++)
+      {
+        $name = mysql_result($query_run,$i,'name');
+         $brand =  mysql_result($query_run,$i,'brand');
+
+         $camera =  mysql_result($query_run,$i,'camera');
+
+         $screen =  mysql_result($query_run,$i,'screen');
+
+         $price =  mysql_result($query_run,$i,'price');
+        echo "<div class='menu-style dark'><b><i>$brand</i></b><br>$name<br>$camera<span> </span>$screen<span> </span> in Just $price<div>";
+
+      }
+    }
+
+     ?>
   </div>
 
 </body>
