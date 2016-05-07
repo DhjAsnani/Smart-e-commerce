@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Studio Croitre </title>
-  <link rel="icon" href="http://studiocroitre.com/logo.jpg">
+  <title> Smart-e-commerce </title>
+  <link rel="icon" href="titlego.png">
   <link href = "css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -15,6 +15,7 @@
   <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+
   <style>
   .yo{ float: left;}
   .headingm{color: #000}
@@ -57,32 +58,6 @@
 
       </div>
   </div>
-  <a href="#authors" data-toggle="modal">
-  <img src="where.png">
-  <!--<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>-->
-      <p id="headingts">Where Are We?</p>
-  </a>
-  <div class="modal fade" id="authors" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h1 class="modal-title headingm" id="myModalLabel">About Authors</h1>
-        </div>
-        <div class="modal-body">
-          <p class="kakkarotwho">
-          The French word Croitre means to grow.
-  As growth is a very distinctive
-  phenomenon for a person ,
-  any society and thus the mankind,
-  so we emphasize on the modern approach towards it,i.e.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-        </div>
-      </div>
-    </div>
-  </div>
 </body>
 </html>
