@@ -133,9 +133,5 @@ display: inline-block
       ?>
   </div>
   <hr>
-  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-  <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
 </body>
 </html>
