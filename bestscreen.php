@@ -80,7 +80,7 @@ display: inline-block
     <hr>
     <?php
     require 'connect.inc.php';
-    $query  ="SELECT * FROM `mobiledb` WHERE `camera` > '10' AND `rating_value` > '120'";
+    $query  ="SELECT * FROM `mobiledb` WHERE `screen` > '3.4' AND `rating_value` > '40'";
     if($query_run = mysql_query($query))
     {
       for( $i=0;$i<mysql_num_rows($query_run);$i++)
@@ -95,42 +95,15 @@ display: inline-block
          $price =  mysql_result($query_run,$i,'price');
          $img = $brand.".jpg";
            $img = str_replace(' ', '', $img);
-        echo "<div class='menu-style dark'><img src = '$img'><br><b><i>$brand</i></b><br>$name<br>$camera $screen in Just Rs. $price</div>";
+      echo "<div class='menu-style dark'><img src = '$img'><br><b><i>$brand</i></b><br>$name<br><i>Rare facing camera</i> $camera <b> mp</b> <br>and<i> screen of size </i> $screen<b> inches</b><br> in Just Rs. $price</div>";
 
       }
-      echo "<div class='menu-style dark'><b>And Many More</b></div>";
+
     }
 
      ?>
      <hr>
-     <h3><i>Best Screen Size Mobile</i></h3>
-     <hr>
-     <?php
-     require 'connect.inc.php';
-     $query  ="SELECT * FROM `mobiledb` WHERE `screen` > '5.2' AND `rating_value` > '110'";
-     if($query_run = mysql_query($query))
-     {
-       for( $i=0;$i<mysql_num_rows($query_run);$i++)
-       {
-         $name = mysql_result($query_run,$i,'name');
-          $brand =  mysql_result($query_run,$i,'brand');
 
-          $camera =  mysql_result($query_run,$i,'camera');
-
-          $screen =  mysql_result($query_run,$i,'screen');
-
-          $price =  mysql_result($query_run,$i,'price');
-
-          $img = $brand.".jpg";
-          $img = str_replace(' ', '', $img);
-
-         echo "<div class='menu-style dark'><img src = '$img'><br><b><i>$brand</i></b><br>$name<br>$camera $screen in Just Rs. $price</div>";
-
-       }
-       echo "<div class='menu-style dark'><b>And Many More</b></div>";
-     }
-
-      ?>
   </div>
   <hr>
 </body>
