@@ -17,6 +17,13 @@
   <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
 
   <style>
+  <style>
+  #lol
+  {
+    max-width: 100px;
+    max-height: 100px;
+  }
+  div{display: block;}
   img{
     max-width: 40px;
     max-height: 40px;
@@ -30,12 +37,13 @@
       padding-bottom: 45px;
       margin-bottom: 30px;
       margin: 10px;
-  	-webkit-transition: all 0.3s;
-  	transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
       border: 1px solid transparent;
-display: inline-block
+  display: inline-block
 
   }
+  </style>
   </style>
 </head>
 <body>
@@ -95,8 +103,39 @@ display: inline-block
          $price =  mysql_result($query_run,$i,'price');
          $img = $brand.".jpg";
            $img = str_replace(' ', '', $img);
-      echo "<div class='menu-style dark'><img src = '$img'><br><b><i>$brand</i></b><br>$name<br><i>Rare facing camera</i> $camera <b> mp</b> <br>and<i> screen of size </i> $screen<b> inches</b><br> in Just Rs. $price</div>";
+           $brand = str_replace(' ', '', $brand);
+           $modallink = '#'.$brand;
+           echo "<div class='menu-style dark'><a href='$modallink' data-toggle='modal'><img src = '$img'><br><b><i>$brand</i></b><br>$name<br><i>Rare facing camera</i> $camera <b> mp</b> <br>and<i> screen of size </i> $screen<b> inches</b><br> in Just Rs. $price</a></div>";
 
+           echo "
+
+           <!-- Modal -->
+           <div id='$brand' class='modal fade' role='dialog'>
+             <div class='modal-dialog'>
+
+               <!-- Modal content-->
+               <div class='modal-content'>
+                 <div class='modal-header'>
+                   <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                   <h4 class='modal-title'>Specification</h4>
+                 </div>
+                 <div class='modal-body'>
+                 <img src='$img' id='lol'><br>
+                 <marquee><b>Offer Offer Offer</b></marquee>
+                   <p>Here Comes the <b>$brand</b><br><i>$name</i><br>
+                   with a powerful camera of $camera MP and <br>
+                   amazing display size of $screen inches<br>
+                   Only in<b> Rs.$price <i>Only</i></b><br>
+                   <h3><i>Grab it before it walks away </i></h3><br>
+                   </p>
+                 </div>
+                 <div class='modal-footer'>
+                   <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                 </div>
+               </div>
+
+             </div>
+           </div>";
       }
 
     }
@@ -106,5 +145,7 @@ display: inline-block
 
   </div>
   <hr>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>
