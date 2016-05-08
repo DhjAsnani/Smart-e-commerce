@@ -101,15 +101,19 @@ display: inline-block
 
          $price =  mysql_result($query_run,$i,'price');
          $img = $brand.".jpg";
+         $rating_value =  mysql_result($query_run,$i,'rating_value');
            $img = str_replace(' ', '', $img);
            $brand = str_replace(' ', '', $brand);
-           $modallink = '#'.$brand;
-           echo "<div class='menu-style dark'><a href='$modallink' data-toggle='modal'><img src = '$img'><br><b><i>$brand</i></b><br>$name<br><i>Rare facing camera</i> $camera <b> mp</b> <br>and<i> screen of size </i> $screen<b> inches</b><br> in Just Rs. $price</a></div>";
+           $modallinkyo = $brand.$name.$camera;
+           $modallinkyo = str_replace(' ', '', $modallinkyo);
+           $modallink = '#'.$modallinkyo;
+
+           echo "<div class='menu-style dark'><a href='$modallink' data-toggle='modal'><img src = '$img'><br><b><i>$brand</i></b><br>$name<br><i>Rare facing camera</i> $camera <b> mp</b> <br>and<i> screen of size </i> $screen<b> inches</b><br> in Just Rs. $price</a><br><a href='similarprod.php?rating_value=$rating_value' ><i><b>Show similar phones</b></i></a></div>";
 
            echo "
 
            <!-- Modal -->
-           <div id='$brand' class='modal fade' role='dialog'>
+           <div id='$modallinkyo' class='modal fade' role='dialog'>
              <div class='modal-dialog'>
 
                <!-- Modal content-->
@@ -129,9 +133,11 @@ display: inline-block
                    </p>
                  </div>
                  <div class='modal-footer'>
+                  <input type = 'submit' value='Add to cart' class = 'btn btn-primary'>
                    <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
                  </div>
                </div>
+
 
              </div>
            </div>";
@@ -161,17 +167,22 @@ display: inline-block
           $screen =  mysql_result($query_run,$i,'screen');
 
           $price =  mysql_result($query_run,$i,'price');
-
+          $rating_value =  mysql_result($query_run,$i,'rating_value');
           $img = $brand.".jpg";
           $img = str_replace(' ', '', $img);
           $brand = str_replace(' ', '', $brand);
-          $modallink = '#'.$brand;
-          echo "<div class='menu-style dark'><a href='$modallink' data-toggle='modal'><img src = '$img'><br><b><i>$brand</i></b><br>$name<br><i>Rare facing camera</i> $camera <b> mp</b> <br>and<i> screen of size </i> $screen<b> inches</b><br> in Just Rs. $price</a></div>";
+          $modallinkyo = $brand.$name.$camera;
+          $modallinkyo = str_replace(' ', '', $modallinkyo);
+          $modallink = '#'.$modallinkyo;
+
+          echo "<div class='menu-style dark'><a href='$modallink' data-toggle='modal'><img src = '$img'><br><b><i>$brand</i></b><br>$name<br><i>Rare facing camera</i> $camera <b> mp</b> <br>and<i> screen of size </i> $screen<b> inches</b><br> in Just Rs. $price</a><br><a href='similarprod.php?rating_value=$rating_value' ><i><b>Show similar phones</b></i></a></div>";
+
+
 
           echo "
 
           <!-- Modal -->
-          <div id='$brand' class='modal fade' role='dialog'>
+          <div id='$modallinkyo' class='modal fade' role='dialog'>
             <div class='modal-dialog'>
 
               <!-- Modal content-->
@@ -191,6 +202,7 @@ display: inline-block
                   </p>
                 </div>
                 <div class='modal-footer'>
+                <input type = 'submit' value='Add to cart' class = 'btn btn-primary'>
                   <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
                 </div>
               </div>
@@ -208,6 +220,7 @@ display: inline-block
 
   </div>
   <hr>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
