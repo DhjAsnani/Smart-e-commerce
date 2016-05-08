@@ -1,3 +1,15 @@
+<?php
+require 'core.inc.php';
+require 'connect.inc.php';
+$query = "SELECT * FROM `logindetails` WHERE `login`='1'";
+if($queryrun = mysql_query($query))
+{
+  $name = mysql_result($queryrun,0,'name');
+  echo "Welcome !, $name";
+}
+
+
+ ?>
 <!doctype html>
 <html>
 <head>

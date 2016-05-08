@@ -44,7 +44,7 @@ require 'connect.inc.php';
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" id="inputEmail" value="" name = "email" class="form-control" placeholder="Email address" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" name="password" value="" class="form-control" placeholder="Password" required>
+        <input type="password" id="inputPassword" name="password" va class="form-control" placeholder="Password" required>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me
