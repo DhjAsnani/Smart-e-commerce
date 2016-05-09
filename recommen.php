@@ -139,7 +139,7 @@ else {
       </div>
   </div></nav>
   <div class="container">
-    <h3><i>Best Camera Mobile</i></h3>
+    <h3><i>Best suits to you</i></h3>
     <hr>
     <?php
     require 'connect.inc.php';

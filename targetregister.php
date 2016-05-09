@@ -10,10 +10,16 @@ if(isset($_POST['email'])&&isset($_POST['name'])&&isset($_POST['password'])&&iss
   $name = $_POST['name'];
   $gender = $_POST['gender'];
   $id = 125 + strlen($email) + strlen(  $password) + strlen($name) + strlen($gender);
+  if(strlen($password)<6)
+  {
+
+    die("Password length must be of atleast 6 digits \nFill form Again <a href='register.php'>HERE</a> ");
+  }
   if($password!=$cnf_password)
   {
     echo "Password Not Matched\nFill form Again <a href='register.php'>HERE</a>";
   }
+
   else {
     $query_1 = "SELECT `email` FROM `logindetails` WHERE `email`='$email'";
     if($query_run_1 = mysql_query($query_1))

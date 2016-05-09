@@ -159,9 +159,10 @@ $array = explode(',', $yo);
      {
        $yo = mysql_result(mysql_query($query),0,'mycart');
      }
-
+  echo "<a href='allclear.php' role='button'  class = 'btn btn-primary'> Clear Cart</a><br>";
      $array = explode(',', $yo);
 
+$totalsum = 0;
        for( $i=1;$i<sizeof($array);$i++)
        {
          $querygo = "SELECT * FROM `mobiledb` WHERE `id`='$array[$i]'";
@@ -174,6 +175,7 @@ $array = explode(',', $yo);
           $screen =  mysql_result(mysql_query($querygo),0,'screen');
 
           $price =  mysql_result(mysql_query($querygo),0,'price');
+          $totalsum = $totalsum + $price;
            $rating_value =  mysql_result(mysql_query($querygo),0,'rating_value');
           $img = $brand.".jpg";
             $img = str_replace(' ', '', $img);
@@ -194,7 +196,7 @@ $array = explode(',', $yo);
                 <div class='modal-content'>
                   <div class='modal-header'>
                     <button type='button' class='close' data-dismiss='modal'>&times;</button>
-                    <h4 class='modal-title'>Specification</h4>
+                    <h4 class='modal-title'>Specification4</h4>
                   </div>
                   <div class='modal-body'>
                   <img src='$img' id='lol'><br>
@@ -207,7 +209,7 @@ $array = explode(',', $yo);
                     </p>
                   </div>
                   <div class='modal-footer'>
-
+                    <a href='dels.php?val=$array[$i]' role='button'  class = 'btn btn-primary'> Remove from cart</a><br>
                     <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
                   </div>
                 </div>
@@ -217,7 +219,7 @@ $array = explode(',', $yo);
        }
 
      }
-
+     echo "<h3>Total amount of your cart-: <b><i>Rs. $totalsum /-</i></b><br>Happy Shopping! Visit us Again<br></h3>";
       ?>
       <hr>
 

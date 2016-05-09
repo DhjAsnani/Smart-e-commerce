@@ -263,7 +263,7 @@ display: inline-block
                   </p>
                 </div>
                 <div class='modal-footer'>
-                <a href='createcart.php?rating_value=$rating_value&path=$path' role='button'  class = 'btn btn-primary'> Add to cart</a>
+                <a href='createcart.php?id=$id&path=$path' role='button'  class = 'btn btn-primary'> Add to cart</a>
                   <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
                 </div>
               </div>
