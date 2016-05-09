@@ -13,8 +13,6 @@ else {
   echo "You are not logged in!";
 }
 }
-
-
  ?>
 <!doctype html>
 <html>
@@ -79,7 +77,7 @@ display: inline-block
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" rel="home" href="/" title="Aahan Krish's Blog - Homepage">Smart - e - Commerce</a>
+          <a class="navbar-brand" rel="home" href="index.php" title="Aahan Krish's Blog - Homepage">Smart - e - Commerce</a>
       </div>
 
       <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -111,7 +109,18 @@ display: inline-block
                 }
               }
                 ?></li>
-              <li><a href="cart.php">Your Cart</a></li>
+
+              <?php $query ="SELECT * FROM `logindetails` WHERE `login`='1'";
+              if($query_run=mysql_query($query))
+              {
+                if(mysql_num_rows($query_run)>0)
+                {
+                    echo "  <li><a href='cart.php'>Your Cart</a></li>";
+                    echo "  <li><a href='recommen.php'>Pref. Prod.</a></li>";
+                }
+
+              }
+                ?>
 
           </ul>
 
@@ -153,7 +162,7 @@ display: inline-block
            $modallinkyo = $brand.$name.$camera;
            $modallinkyo = str_replace(' ', '', $modallinkyo);
            $modallink = '#'.$modallinkyo;
-
+          $path = 'index.php';
            echo "<div class='menu-style dark'><a href='$modallink' data-toggle='modal'><img src = '$img'><br><b><i>$brand</i></b><br>$name<br><i>Rare facing camera</i> $camera <b> mp</b> <br>and<i> screen of size </i> $screen<b> inches</b><br> in Just Rs. $price</a><br><a href='similarprod.php?rating_value=$rating_value' ><i><b>Show similar phones</b></i></a></div>";
 
            echo "
@@ -176,6 +185,8 @@ display: inline-block
                    amazing display size of $screen inches<br>
                    Only in<b> Rs.$price <i>Only</i></b><br>
                    <h3><i>Grab it before it walks away </i></h3><br>
+
+                   <a href='makepref.php?rating_value=$rating_value&path=$path'>Interested?</a>
                    </p>
                  </div>
                  <div class='modal-footer'>
@@ -220,7 +231,7 @@ display: inline-block
           $modallinkyo = $brand.$name.$camera;
           $modallinkyo = str_replace(' ', '', $modallinkyo);
           $modallink = '#'.$modallinkyo;
-
+          $path = 'index.php';
           echo "<div class='menu-style dark'><a href='$modallink' data-toggle='modal'><img src = '$img'><br><b><i>$brand</i></b><br>$name<br><i>Rare facing camera</i> $camera <b> mp</b> <br>and<i> screen of size </i> $screen<b> inches</b><br> in Just Rs. $price</a><br><a href='similarprod.php?rating_value=$rating_value' ><i><b>Show similar phones</b></i></a></div>";
 
 
@@ -245,6 +256,8 @@ display: inline-block
                   amazing display size of $screen inches<br>
                   Only in<b> Rs.$price <i>Only</i></b><br>
                   <h3><i>Grab it before it walks away </i></h3><br>
+
+                  <a href='makepref.php?rating_value=$rating_value&path=$path'>Interested?</a>
                   </p>
                 </div>
                 <div class='modal-footer'>

@@ -1,3 +1,19 @@
+<?php
+require 'core.inc.php';
+require 'connect.inc.php';
+$query = "SELECT * FROM `logindetails` WHERE `login`='1'";
+if($queryrun = mysql_query($query))
+{
+  if(mysql_num_rows($queryrun)>0)
+  {
+  $name = mysql_result($queryrun,0,'name');
+  echo "Welcome !, $name";
+}
+else {
+  echo "You are not logged in!";
+}
+}
+?>
 <!doctype html>
 <html>
 <head>
@@ -17,6 +33,11 @@
   <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
 
   <style>
+  .dp{
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 100%;
+  }
   #lol
   {
     max-width: 100px;
@@ -39,10 +60,9 @@
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
       border: 1px solid transparent;
-display: inline-block
+  display: inline-block
 
   }
-
   </style>
 </head>
 <body>
@@ -56,16 +76,50 @@ display: inline-block
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" rel="home" href="/" title="Aahan Krish's Blog - Homepage">Smart - e - Commerce</a>
+          <a class="navbar-brand" rel="home" href="index.php" title="Aahan Krish's Blog - Homepage">Smart - e - Commerce</a>
       </div>
 
       <div class="collapse navbar-collapse navbar-ex1-collapse">
 
           <ul class="nav navbar-nav">
-              <li><a href="#authors" data-toggle="modal">About Authors</a></li>
-              <li><a href="loginreg.php">Login</a></li>
-              <li><a href="register.php">Register</a></li>
-              <li><a href="cart.php">Your Cart</a></li>
+              <li><a href="#author" data-toggle="modal">About Authors</a></li>
+              <li><?php $query ="SELECT * FROM `logindetails` WHERE `login`='1'";
+              if($query_run=mysql_query($query))
+              {
+                if(mysql_num_rows($query_run)>0)
+                {
+                  echo "<a href='logout.php'>Logout</a>";
+                }
+                else {
+                  echo "<a href='loginreg.php' >Login</a>";
+                }
+              }
+                ?>
+              <li><?php $query ="SELECT * FROM `logindetails` WHERE `login`='1'";
+              if($query_run=mysql_query($query))
+              {
+                if(mysql_num_rows($query_run)>0)
+                {
+                    echo "<a href='account.php' >My Account</a>";
+                }
+                else {
+
+                  echo "<a href='register.php'>Register</a>";
+                }
+              }
+                ?></li>
+
+              <?php $query ="SELECT * FROM `logindetails` WHERE `login`='1'";
+              if($query_run=mysql_query($query))
+              {
+                if(mysql_num_rows($query_run)>0)
+                {
+                    echo "  <li><a href='cart.php'>Your Cart</a></li>";
+                    echo "  <li><a href='recommen.php'>Pref. Prod.</a></li>";
+                }
+
+              }
+                ?>
 
           </ul>
 
@@ -100,13 +154,14 @@ display: inline-block
          $screen =  mysql_result($query_run,$i,'screen');
 
          $price =  mysql_result($query_run,$i,'price');
+          $rating_value =  mysql_result($query_run,$i,'rating_value');
          $img = $brand.".jpg";
            $img = str_replace(' ', '', $img);
            $brand = str_replace(' ', '', $brand);
            $modallinkyo = $brand.$name.$camera;
            $modallinkyo = str_replace(' ', '', $modallinkyo);
            $modallink = '#'.$modallinkyo;
-
+$path = 'bestscreen.php';
            echo "<div class='menu-style dark'><a href='$modallink' data-toggle='modal'><img src = '$img'><br><b><i>$brand</i></b><br>$name<br><i>Rare facing camera</i> $camera <b> mp</b> <br>and<i> screen of size </i> $screen<b> inches</b><br> in Just Rs. $price</a></div>";
 
            echo "
@@ -128,7 +183,7 @@ display: inline-block
                    with a powerful camera of $camera MP and <br>
                    amazing display size of $screen inches<br>
                    Only in<b> Rs.$price <i>Only</i></b><br>
-                   <h3><i>Grab it before it walks away </i></h3><br>
+                   <h3><i>Grab it before it walks away </i></h3><br>   <a href='makepref.php?rating_value=$rating_value&path=$path'>Interested?</a>
                    </p>
                  </div>
                  <div class='modal-footer'>
@@ -147,6 +202,41 @@ display: inline-block
 
   </div>
   <hr>
+  <div id="author" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">About Authors</h4>
+      </div>
+      <div class="modal-body">
+        <img src="44.jpg" class="dp">
+        <h3>1. <i>Dheeraj Asnani</i></h3>
+        <h4>Delhi Technological Universty</h4>
+         2K13/CO/44<hr>
+         <img src="48.jpg" class="dp">
+        <h3>2. <i>Divyanshu Kumar</i></h3>
+        <h4>Delhi Technological Universty</h4>
+         2K13/CO/48<hr>
+         <img src="49.jpg" class="dp">
+        <h3>3. <i>Gaurav Gupta</i></h3>
+        <h4>Delhi Technological Universty</h4>
+         2K13/CO/49<hr>
+         <img src="50.jpg" class="dp">
+        <h3>4. <i>Gautam Kumar</i></h3>
+        <h4>Delhi Technological Universty</h4>
+         2K13/CO/50<hr>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
