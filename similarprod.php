@@ -19,6 +19,10 @@
 
    <style>
    <style>
+   a {
+    color: #000;
+    font-size: 17px;
+}
    #lol
    {
      max-width: 100px;
@@ -44,6 +48,10 @@
    display: inline-block
 
    }
+   a {
+    color: #000;
+    font-size: 17px;
+}
    </style>
    </style>
  </head>
@@ -58,7 +66,7 @@
            <span class="icon-bar"></span>
            <span class="icon-bar"></span>
            </button>
-           <a class="navbar-brand" rel="home" href="/" title="Aahan Krish's Blog - Homepage">Smart - e - Commerce</a>
+           <a class="navbar-brand" rel="home" href="index.php" title="Aahan Krish's Blog - Homepage">Smart - e - Commerce</a>
        </div>
 
        <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -85,7 +93,7 @@
        </div>
    </div></nav>
    <div class="container">
-     <h3><i>Best Camera Mobile</i></h3>
+     <h3><i>Some similar products</i></h3>
      <hr>
      <?php
      require 'connect.inc.php';
@@ -103,7 +111,7 @@
           $screen =  mysql_result($query_run,$i,'screen');
 
           $price =  mysql_result($query_run,$i,'price');
-          $price =  mysql_result($query_run,$i,'rating_value');
+          $rating_value =  mysql_result($query_run,$i,'rating_value');
           $img = $brand.".jpg";
             $img = str_replace(' ', '', $img);
             $brand = str_replace(' ', '', $brand);

@@ -8,6 +8,7 @@ if(mysql_query($query))
 {//echo mysql_num_rows(mysql_query($query));
   $mycar = mysql_result(mysql_query($query),0,'mycart');
   echo "$mycar";
+
 }
 
 $mycar = $mycar.','.$id;
@@ -27,6 +28,10 @@ if($query2_run=mysql_query($query2))
   if($path == 'bestscreen.php')
   {
   header("Location: bestscreen.php");
+  }
+  if($path == "4")
+  {
+    header("Location: similarprod.php?rating_value=113");
   }
 
 }

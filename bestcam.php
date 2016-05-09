@@ -63,6 +63,10 @@ else {
   display: inline-block
 
   }
+  a {
+   color: #000;
+   font-size: 17px;
+}
   </style>
 </head>
 <body>

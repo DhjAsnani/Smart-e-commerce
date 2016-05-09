@@ -44,7 +44,7 @@ else {
     max-width: 100px;
     max-height: 100px;
   }
-  div{display: block;}
+  div{display: block;color: #000}
   img{
     max-width: 40px;
     max-height: 40px;

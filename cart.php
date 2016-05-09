@@ -75,6 +75,10 @@ $array = explode(',', $yo);
    display: inline-block
 
    }
+   a {
+    color: #000;
+    font-size: 17px;
+}
    </style>
  </head>
  <body>
@@ -196,7 +200,7 @@ $totalsum = 0;
                 <div class='modal-content'>
                   <div class='modal-header'>
                     <button type='button' class='close' data-dismiss='modal'>&times;</button>
-                    <h4 class='modal-title'>Specification4</h4>
+                    <h4 class='modal-title'>Specification</h4>
                   </div>
                   <div class='modal-body'>
                   <img src='$img' id='lol'><br>

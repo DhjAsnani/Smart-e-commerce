@@ -34,6 +34,10 @@ else {
 
   <style>
   <style>
+  a {
+   color: #000;
+   font-size: 17px;
+}
   .dp{
     max-width: 150px;
     max-height: 150px;
@@ -64,6 +68,10 @@ else {
   display: inline-block
 
   }
+  a {
+   color: #000;
+   font-size: 17px;
+}
   </style>
   </style>
 </head>
