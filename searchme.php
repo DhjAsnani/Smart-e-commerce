@@ -141,22 +141,23 @@ else {
       </div>
   </div></nav>
   <div class="container">
-    <h3><i>Best Screen Mobile</i></h3>
+    <h3><i>Your Search Result</i></h3>
     <hr>
     <?php
     require 'connect.inc.php';
-    $query  ="SELECT * FROM `mobiledb` WHERE `screen` > '3.4' AND `rating_value` > '40'";
+    $tosearch=$_POST['srch-term'];
+    $query  ="SELECT * FROM `mobiledb` WHERE `brand` LIKE '%$tosearch%'";
     if($query_run = mysql_query($query))
     {
       for( $i=0;$i<mysql_num_rows($query_run);$i++)
       {
         $name = mysql_result($query_run,$i,'name');
          $brand =  mysql_result($query_run,$i,'brand');
-
+         $id = mysql_result($query_run,$i,'id');
          $camera =  mysql_result($query_run,$i,'camera');
 
          $screen =  mysql_result($query_run,$i,'screen');
-         $id = mysql_result($query_run,$i,'id');
+
          $price =  mysql_result($query_run,$i,'price');
           $rating_value =  mysql_result($query_run,$i,'rating_value');
          $img = $brand.".jpg";
