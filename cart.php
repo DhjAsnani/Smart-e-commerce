@@ -1,4 +1,31 @@
+<?php
+require 'connect.inc.php';
+$yo="";
+$query = "SELECT `mycart` FROM `logindetails` WHERE `login`='1'";
+if(mysql_query($query))
+{
+  $yo = mysql_result(mysql_query($query),0,'mycart');
+}
 
+$array = explode(',', $yo);
+
+ ?>
+ <?php
+ require 'core.inc.php';
+ require 'connect.inc.php';
+ $query = "SELECT * FROM `logindetails` WHERE `login`='1'";
+ if($queryrun = mysql_query($query))
+ {
+   if(mysql_num_rows($queryrun)>0)
+   {
+   $name = mysql_result($queryrun,0,'name');
+   echo "Welcome !, $name";
+ }
+ else {
+   echo "You are not logged in!";
+ }
+ }
+ ?>
  <!doctype html>
  <html>
  <head>
@@ -18,7 +45,11 @@
    <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
 
    <style>
-   <style>
+   .dp{
+     max-width: 150px;
+     max-height: 150px;
+     border-radius: 100%;
+   }
    #lol
    {
      max-width: 100px;
@@ -45,7 +76,6 @@
 
    }
    </style>
-   </style>
  </head>
  <body>
    <nav>
@@ -58,16 +88,50 @@
            <span class="icon-bar"></span>
            <span class="icon-bar"></span>
            </button>
-           <a class="navbar-brand" rel="home" href="/" title="Aahan Krish's Blog - Homepage">Smart - e - Commerce</a>
+           <a class="navbar-brand" rel="home" href="index.php" title="Aahan Krish's Blog - Homepage">Smart - e - Commerce</a>
        </div>
 
        <div class="collapse navbar-collapse navbar-ex1-collapse">
 
            <ul class="nav navbar-nav">
-               <li><a href="#authors" data-toggle="modal">About Authors</a></li>
-               <li><a href="loginreg.php">Login</a></li>
-               <li><a href="register.php">Register</a></li>
-               <li><a href="cart.php">Your Cart</a></li>
+               <li><a href="#author" data-toggle="modal">About Authors</a></li>
+               <li><?php $query ="SELECT * FROM `logindetails` WHERE `login`='1'";
+               if($query_run=mysql_query($query))
+               {
+                 if(mysql_num_rows($query_run)>0)
+                 {
+                   echo "<a href='logout.php'>Logout</a>";
+                 }
+                 else {
+                   echo "<a href='loginreg.php' >Login</a>";
+                 }
+               }
+                 ?>
+               <li><?php $query ="SELECT * FROM `logindetails` WHERE `login`='1'";
+               if($query_run=mysql_query($query))
+               {
+                 if(mysql_num_rows($query_run)>0)
+                 {
+                     echo "<a href='account.php' >My Account</a>";
+                 }
+                 else {
+
+                   echo "<a href='register.php'>Register</a>";
+                 }
+               }
+                 ?></li>
+
+               <?php $query ="SELECT * FROM `logindetails` WHERE `login`='1'";
+               if($query_run=mysql_query($query))
+               {
+                 if(mysql_num_rows($query_run)>0)
+                 {
+                     echo "  <li><a href='cart.php'>Your Cart</a></li>";
+                     echo "  <li><a href='recommen.php'>Pref. Prod.</a></li>";
+                 }
+
+               }
+                 ?>
 
            </ul>
 
@@ -85,25 +149,32 @@
        </div>
    </div></nav>
    <div class="container">
-     <h3><i>Best Camera Mobile</i></h3>
+     <h3><i>My Cart</i></h3>
      <hr>
      <?php
      require 'connect.inc.php';
-     $num = $_GET['rating_value'];
-     $query  ="SELECT * FROM `mobiledb` WHERE `rating_value` > 0.9*'$num' AND `rating_value`<1.1*'$num'";
-     if($query_run = mysql_query($query))
+     $yo="";
+     $query = "SELECT `mycart` FROM `logindetails` WHERE `login`='1'";
+     if(mysql_query($query))
      {
-       for( $i=0;$i<mysql_num_rows($query_run);$i++)
+       $yo = mysql_result(mysql_query($query),0,'mycart');
+     }
+
+     $array = explode(',', $yo);
+
+       for( $i=1;$i<sizeof($array);$i++)
        {
-         $name = mysql_result($query_run,$i,'name');
-          $brand =  mysql_result($query_run,$i,'brand');
-          $id = mysql_result($query_run,$i,'id');
-          $camera =  mysql_result($query_run,$i,'camera');
+         $querygo = "SELECT * FROM `mobiledb` WHERE `id`='$array[$i]'";
+         if(mysql_query($querygo)&&$array[$i]!=""){
+         $name = mysql_result(mysql_query($querygo),0,'name');
+          $brand =  mysql_result(mysql_query($querygo),0,'brand');
+          $id = mysql_result(mysql_query($querygo),0,'id');
+          $camera =  mysql_result(mysql_query($querygo),0,'camera');
 
-          $screen =  mysql_result($query_run,$i,'screen');
+          $screen =  mysql_result(mysql_query($querygo),0,'screen');
 
-          $price =  mysql_result($query_run,$i,'price');
-          $price =  mysql_result($query_run,$i,'rating_value');
+          $price =  mysql_result(mysql_query($querygo),0,'price');
+           $rating_value =  mysql_result(mysql_query($querygo),0,'rating_value');
           $img = $brand.".jpg";
             $img = str_replace(' ', '', $img);
             $brand = str_replace(' ', '', $brand);
@@ -136,7 +207,7 @@
                     </p>
                   </div>
                   <div class='modal-footer'>
-                  <a href='createcart.php?id=$id&path=4' role='button'  class = 'btn btn-primary'> Add to cart</a>
+
                     <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
                   </div>
                 </div>
@@ -152,6 +223,41 @@
 
    </div>
    <hr>
+   <div id="author" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+
+     <!-- Modal content-->
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4 class="modal-title">About Authors</h4>
+       </div>
+       <div class="modal-body">
+         <img src="44.jpg" class="dp">
+         <h3>1. <i>Dheeraj Asnani</i></h3>
+         <h4>Delhi Technological Universty</h4>
+          2K13/CO/44<hr>
+          <img src="48.jpg" class="dp">
+         <h3>2. <i>Divyanshu Kumar</i></h3>
+         <h4>Delhi Technological Universty</h4>
+          2K13/CO/48<hr>
+          <img src="49.jpg" class="dp">
+         <h3>3. <i>Gaurav Gupta</i></h3>
+         <h4>Delhi Technological Universty</h4>
+          2K13/CO/49<hr>
+          <img src="50.jpg" class="dp">
+         <h3>4. <i>Gautam Kumar</i></h3>
+         <h4>Delhi Technological Universty</h4>
+          2K13/CO/50<hr>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       </div>
+     </div>
+
+   </div>
+ </div>
+
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
  </body>

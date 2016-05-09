@@ -33,6 +33,7 @@ else {
   <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
 
   <style>
+  <style>
   .dp{
     max-width: 150px;
     max-height: 150px;
@@ -63,6 +64,7 @@ else {
   display: inline-block
 
   }
+  </style>
   </style>
 </head>
 <body>
@@ -137,31 +139,39 @@ else {
       </div>
   </div></nav>
   <div class="container">
-    <h3><i>Best Screen Mobile</i></h3>
+    <h3><i>Best Camera Mobile</i></h3>
     <hr>
     <?php
     require 'connect.inc.php';
-    $query  ="SELECT * FROM `mobiledb` WHERE `screen` > '3.4' AND `rating_value` > '40'";
+    $prefvalue='0';
+    $query_h = "SELECT `prefprob` FROM `logindetails` WHERE `login`='1'";
+    if($query_h_run = mysql_query($query_h))
+    {
+      $prefvalue = mysql_result($query_h_run,0,'prefprob');
+    }
+    $query  ="SELECT * FROM `mobiledb` WHERE  `rating_value` < 1.1*'$prefvalue' AND  `rating_value` > 0.95*'$prefvalue'";
+
     if($query_run = mysql_query($query))
     {
       for( $i=0;$i<mysql_num_rows($query_run);$i++)
       {
+        $id = mysql_result($query_run,$i,'id');
         $name = mysql_result($query_run,$i,'name');
          $brand =  mysql_result($query_run,$i,'brand');
 
          $camera =  mysql_result($query_run,$i,'camera');
 
          $screen =  mysql_result($query_run,$i,'screen');
-         $id = mysql_result($query_run,$i,'id');
+
          $price =  mysql_result($query_run,$i,'price');
-          $rating_value =  mysql_result($query_run,$i,'rating_value');
+           $rating_value =  mysql_result($query_run,$i,'rating_value');
          $img = $brand.".jpg";
            $img = str_replace(' ', '', $img);
            $brand = str_replace(' ', '', $brand);
            $modallinkyo = $brand.$name.$camera;
            $modallinkyo = str_replace(' ', '', $modallinkyo);
            $modallink = '#'.$modallinkyo;
-$path = 'bestscreen.php';
+$path = 'bestcam.php';
            echo "<div class='menu-style dark'><a href='$modallink' data-toggle='modal'><img src = '$img'><br><b><i>$brand</i></b><br>$name<br><i>Rare facing camera</i> $camera <b> mp</b> <br>and<i> screen of size </i> $screen<b> inches</b><br> in Just Rs. $price</a></div>";
 
            echo "

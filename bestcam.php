@@ -33,7 +33,6 @@ else {
   <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
 
   <style>
-  <style>
   .dp{
     max-width: 150px;
     max-height: 150px;
@@ -64,7 +63,6 @@ else {
   display: inline-block
 
   }
-  </style>
   </style>
 </head>
 <body>
@@ -139,7 +137,7 @@ else {
       </div>
   </div></nav>
   <div class="container">
-    <h3><i>Best Camera Mobile</i></h3>
+    <h3><i>Best camera Mobile</i></h3>
     <hr>
     <?php
     require 'connect.inc.php';
@@ -150,20 +148,20 @@ else {
       {
         $name = mysql_result($query_run,$i,'name');
          $brand =  mysql_result($query_run,$i,'brand');
-
+         $id = mysql_result($query_run,$i,'id');
          $camera =  mysql_result($query_run,$i,'camera');
 
          $screen =  mysql_result($query_run,$i,'screen');
 
          $price =  mysql_result($query_run,$i,'price');
-           $rating_value =  mysql_result($query_run,$i,'rating_value');
+          $rating_value =  mysql_result($query_run,$i,'rating_value');
          $img = $brand.".jpg";
            $img = str_replace(' ', '', $img);
            $brand = str_replace(' ', '', $brand);
            $modallinkyo = $brand.$name.$camera;
            $modallinkyo = str_replace(' ', '', $modallinkyo);
            $modallink = '#'.$modallinkyo;
-$path = 'bestcam.php';
+$path = 'bestscreen.php';
            echo "<div class='menu-style dark'><a href='$modallink' data-toggle='modal'><img src = '$img'><br><b><i>$brand</i></b><br>$name<br><i>Rare facing camera</i> $camera <b> mp</b> <br>and<i> screen of size </i> $screen<b> inches</b><br> in Just Rs. $price</a></div>";
 
            echo "
@@ -189,6 +187,7 @@ $path = 'bestcam.php';
                    </p>
                  </div>
                  <div class='modal-footer'>
+                 <a href='createcart.php?id=$id&path=$path' role='button'  class = 'btn btn-primary'> Add to cart</a>
                    <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
                  </div>
                </div>

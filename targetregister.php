@@ -24,7 +24,7 @@ if(isset($_POST['email'])&&isset($_POST['name'])&&isset($_POST['password'])&&iss
       }
       else {
 
-        $query = "INSERT INTO `logindetails` VALUES ('$id','$name','$email','$password','$gender','0','0')";
+        $query = "INSERT INTO `logindetails` VALUES ('$id','$name','$email','$password','$gender','0','0','')";
         if($query_run = mysql_query($query))
         {
           echo "USER REGISTERED Now login <a href='loginreg.php'>HERE</a>";
