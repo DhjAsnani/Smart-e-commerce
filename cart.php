@@ -1,5 +1,17 @@
 <?php
 require 'connect.inc.php';
+$query ="SELECT * FROM `logindetails` WHERE `login`='1'";
+if($query_run=mysql_query($query))
+{
+  if(mysql_num_rows($query_run)==0)
+  {
+    header("Location: index.php");
+  }
+
+}
+  ?>
+<?php
+require 'connect.inc.php';
 $yo="";
 $query = "SELECT `mycart` FROM `logindetails` WHERE `login`='1'";
 if(mysql_query($query))
