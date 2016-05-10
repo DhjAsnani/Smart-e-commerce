@@ -77,7 +77,8 @@ $array = explode(',', $yo);
    .kakkarotwho{color: #000; }
    .menu-style {
        color: #000;
-       padding-top: 45px;
+       padding: 45px;
+
        padding-bottom: 45px;
        margin-bottom: 30px;
        margin: 10px;
@@ -90,6 +91,9 @@ $array = explode(',', $yo);
    a {
     color: #000;
     font-size: 17px;
+}
+.menu-style:hover{
+    border: 2px solid rgba(125, 136, 178, 1.0);
 }
    </style>
  </head>
