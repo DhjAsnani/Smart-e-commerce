@@ -3,7 +3,7 @@ require 'connect.inc.php';
 $query ="SELECT * FROM `logindetails` WHERE `login`='1'";
 if($query_run=mysql_query($query))
 {
-  if(mysql_num_rows($query_run)>0)
+  if(mysql_num_rows($query_run))
   {
     header("Location: index.php");
   }
@@ -22,7 +22,7 @@ if($query_run=mysql_query($query))
     <link rel="icon" href="http://studiocroitre.com/logo.jpg">
 
     <title>Sign Up for Smart-e-commerce</title>
-
+    
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 

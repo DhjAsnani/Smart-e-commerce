@@ -94,7 +94,9 @@ $array = explode(',', $yo);
 }
 .menu-style:hover{
     border: 2px solid rgba(125, 136, 178, 1.0);
+
 }
+
    </style>
  </head>
  <body>
@@ -204,7 +206,7 @@ $totalsum = 0;
             $modallinkyo = str_replace(' ', '', $modallinkyo);
             $modallink = '#'.$modallinkyo;
 
-            echo "<div class='menu-style dark'><a href='$modallink' data-toggle='modal'><img src = '$img'><br><b><i>$brand</i></b><br>$name<br><i>Rare facing camera</i> $camera <b> mp</b> <br>and<i> screen of size </i> $screen<b> inches</b><br> in Just Rs. $price</a></div>";
+            echo "<div class='menu-style dark'><p class='1'><a href='$modallink' data-toggle='modal'><img src = '$img'><br><b><i>$brand</i></b><br>$name<br><i>Rare facing camera</i> $camera <b> mp</b> <br>and<i> screen of size </i> $screen<b> inches</b><br> in Just Rs. $price</a></p></div>";
 
             echo "
 
