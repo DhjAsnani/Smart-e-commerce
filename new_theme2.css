@@ -1,0 +1,28 @@
+.dp{
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 100%;
+  }
+  #lol
+  {
+    max-width: 100px;
+    max-height: 100px;
+  }
+  div{display: block;color: #000}
+  img{
+    max-width: 40px;
+    max-height: 40px;
+  }
+  .yo{ float: left;}
+  .headingm{color: #000}
+  .kakkarotwho{color: #000; }
+  .menu-style {
+      color: #000;
+      padding-top: 45px;
+      padding-bottom: 45px;
+      margin-bottom: 30px;
+      margin: 10px;
+  	-webkit-transition: all 0.3s;
+  	transition: all 0.3s;
+      border: 1px solid transparent;
+display: inline-block
